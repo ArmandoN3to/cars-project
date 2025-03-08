@@ -99,6 +99,7 @@ local_settings.py
 *.db-wal
 package-lock.json
 *.sqlite
+*.sqlite3
 node_modules/
 build/
 # C benchmark binary
