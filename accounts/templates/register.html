@@ -1,39 +1,64 @@
 {% extends "base.html" %}
 
 {%block content %}
-
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            {{user_form.username.errors}}
-            <label> Usuario:</label>
-            {{user_form.username}}
-        </div>  
-
-        <div class="form-group">
-            {{user_form.password1.errors}}
-
-            <label> Senha:</label>
-            {{user_form.password1}}
-        </div> 
-
-        <div class="form-group">
-            {{user_form.password2.errors}}
-
-            <label> Confirmaçao de Senha:</label>
-            {{user_form.password2}}
-        </div> 
-
-        <div class="form-group">
-            <input type="submit" value="Cadastrar">
-        </div> 
-    </form>
+    <section class="ezy__signin5 light d-flex">
+        <div class="container">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-lg-10 py-5">
+              <div class="card form-card">
+                <div class="card-body p-md-5">
+                  <div class="row mb-4 mb-md-5">
+                    <div class="col-md-6">
+                      <h2 class="heading ">Criar uma conta</h2>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="mb-0 text-md-end">
+                        <div class="d-flex justify-content-center mt-5">
+                        <span class="opacity-50 me-2">Ja tem uma conta?</span>
     
-    
-    
+                        <a href="{% url 'login' %}" class="btn btn-link p-0 text-dark text-decoration-none ">Login</a>
+                        </div>
+                      </p>
+                    </div>
+                  </div>
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="row justify-content-between">
+                      <div class="col-md-6 col-lg-5">
+                        <div class="form-group mb-4 mt-2">
+                          <label for="email" class="mb-2">Username</label>
+                          <input type="text" class="form-control" id="user" name="{{ user_form.username.name }}" 
+                          placeholder="Enter username" value="{{ user_form.username.value|default_if_none:'' }}" />
+                          <label for="username-error">{{user_form.username.errors}}</label>
+                        </div>
+                        <div class="form-group mb-2 mt-2">
+                          <label for="password" class="mb-2">Senha</label>
+                          <input type="password" class="form-control" id="password" name="{{ user_form.password1.name }}" 
+                          placeholder="Enter Password" />
+                          <label for="error_password">{{user_form.password1.errors}}</label>
+                        </div>
+                        <div class="form-group mb-2 mt-2">
+                            <label for="password" class="mb-2">Confirme sua senha</label>
+                            <input type="password" class="form-control" id="password" name="{{ user_form.password2.name }}" 
+                            placeholder="Enter Password" />
+                            <label for="error_password">{{user_form.password2.errors}}</label>
 
-
-    
-      
+                          </div>
+                        
+                      </div>
+                      <div class="col-md-6 col-lg-5">
+                        <button type="submit" class="btn btn-outline-dark w-100">
+                          Criar conta
+                          <span class="fas fa-arrow-right ms-2 text-white"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 {% endblock %}
