@@ -1,4 +1,4 @@
-from cars.models import Car
+from cars.models import Car, Brand
 from cars.forms import CarModelForm
 from django.views.generic import ListView ,CreateView, DetailView, UpdateView
 
@@ -34,3 +34,8 @@ class CarUpdateView(UpdateView):
     template_name = 'car_update.html'
     form_class = CarModelForm
     success_url = '/cars/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['brands'] = Brand.objects.all()  # Envia todas as marcas para o template
+        return context

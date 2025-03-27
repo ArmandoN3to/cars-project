@@ -27,17 +27,19 @@
                     </div>
 
                     <div class="form-group mb-2 mt-2">
-                        <label for="brand" class="mb-2">Marca</label>
-                        <select class="form-control" id="cars_list" name="{{ form.brand.name }}">
-                            <option value="">Selecione uma marca</option>
-                            {% for brand in brands %}
-                                <option value="{{ brand.value }}" {% if form.brand.value == brand.value %}selected{% endif %}>
-                                    {{ brand.name }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                        <label for="brand-error">{{ form.brand.errors }}</label>
-                    </div>
+                      <label for="brand" class="mb-2">Marca</label>
+                      <select class="form-control" id="brand" name="brand">  <!-- name="brand" (mesmo nome do campo no form) -->
+                          <option value="">Selecione uma marca</option>
+                          {% for brand in brands %}
+                              <option value="{{ brand.id }}" {% if form.brand.value == brand.id %}selected{% endif %}>
+                                  {{ brand.name }}
+                              </option>
+                          {% endfor %}
+                      </select>
+                      {% if form.brand.errors %}
+                          <div class="text-danger">{{ form.brand.errors }}</div>
+                      {% endif %}
+                  </div>
                     
                     <div class="form-group mb-2 mt-2">
                         <label for="factory_year" class="mb-2">Ano de fabricaçao</label>
@@ -78,7 +80,7 @@
                   </div>
                   <div class="col-md-6 col-lg-5">
                     <button type="submit" class="btn btn-outline-dark w-100">
-                      Criar conta
+                      Aplicar
                       <span class="fas fa-arrow-right ms-2 text-white"></span>
                     </button>
                   </div>
