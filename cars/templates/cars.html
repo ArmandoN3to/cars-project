@@ -48,7 +48,9 @@
                 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     {% for car in cars %}
+                    
                     <div class="col mb-5">
+                      <a href="{% url 'car_detail' car.pk %}">
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" />
@@ -59,7 +61,7 @@
                                     <h5 class="fw-bolder">{{ car.brand }} {{ car.model }} {{ car.factory_year }}</h5>
                                     <!-- Product price-->
                                     R$ {{ car.value }}
-                                </div>
+                                </div></a>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -72,10 +74,14 @@
                 {% endfor %}
                 </div>
             </div>
-            {% else %}
-            <p class="no-results">Nenhum carro encontrado.</p>
-            {% endif %}
-            
+                  {% else %}
+                  <p class="no-results">Nenhum carro encontrado.</p>
+                  {% endif %}
+
+            <div>
+              <hr class="divider mb-5 mt-5">
+            </div>  
+
             <!-- About US -->
             <section class="ezy__about6 light" id="ezy__about6">
                 <div class="container">
@@ -126,7 +132,13 @@
                   </div>
                 </div>
               </section>
+              <div>
+                <hr class="divider mb-5 mt-5">
+              </div> 
         </section>
+
+       
+        <p>estou aqui</p>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
