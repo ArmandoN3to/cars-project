@@ -1,6 +1,8 @@
 from cars.models import Car, Brand
 from cars.forms import CarModelForm
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView ,CreateView, DetailView, UpdateView,DeleteView
 
 # Create your views here.
@@ -17,7 +19,7 @@ class CarListView(ListView):
             cars=cars.filter(model__icontains=search)
         return cars
 
-    
+@method_decorator(login_required(login_url='login'),name='dispatch')   
 class NewCarCreateView(CreateView):
     model = Car
     template_name = 'new_car.html'
@@ -40,6 +42,7 @@ class CarDetailView(DetailView):
         context['cars_list'] = Car.objects.all()
         return context
 
+@method_decorator(login_required(login_url='login'),name='dispatch')   
 class CarUpdateView(UpdateView):
     model = Car
     template_name = 'car_update.html'
@@ -53,6 +56,7 @@ class CarUpdateView(UpdateView):
         context['brands'] = Brand.objects.all()  # Envia todas as marcas para o template
         return context
     
+@method_decorator(login_required(login_url='login'),name='dispatch')      
 class CarDeleteView(DeleteView):
     model=Car
     template_name='car_delete.html'
