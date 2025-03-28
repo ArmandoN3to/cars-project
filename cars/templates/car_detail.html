@@ -14,12 +14,20 @@
                             <span>R$ {{object.value}}</span>
                         </div>
                         <p class="lead"><h5>Ano de fabricaçao:{{object.factory_year}} - Ano do modelo: {{object.model_year}} - Placa: {{object.plate}}</h5> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-                        <div class="d-flex">
+                        <div class="d-flex ">
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <a class="btn btn-outline-dark flex-shrink-0 me-3" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </button>
+                            </a>
+                            {% if user.is_superuser %}
+                                <a class="btn btn-outline-dark flex-shrink-0 me-3" type="button" href="{%url 'car_update' pk=object.pk %}" >
+                                    Editar
+                                </a>
+                                <a  class="btn btn-outline-dark flex-shrink-0 me-3" type="button" href="{%url 'car_delete' pk=object.pk %}">
+                                    Deletar
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -30,101 +38,27 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <h2 class="fw-bolder mb-4">Produtos Relacionados</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    {% for object in object_list %}
+                    {% for car in cars_list %}
                     <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{object.photo.url}}" alt="{{object.model}} - {{object.brand}}" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{object.model}} - {{object.brand}}</h5>
-                                    <!-- Product price-->
-                                    R$ {{object.value}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{object.photo.url}}" alt="{{object.model}} - {{object.brand}}" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{object.model}} - {{object.brand}}</h5>
-                                    <!-- Product price-->
-                                    R$ {{object.value}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{object.photo.url}}" alt="{{object.model}} - {{object.brand}}" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{object.model}} - {{object.brand}}</h5>
-                                    <!-- Product price-->
-                                    R$ {{object.value}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{object.photo.url}}" alt="{{object.model}} - {{object.brand}}" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{object.model}} - {{object.brand}}</h5>
-                                    <!-- Product price-->
-                                    R$ {{object.value}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="{{object.photo.url}}" alt="{{object.model}} - {{object.brand}}" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">{{object.model}} - {{object.brand}}</h5>
-                                    <!-- Product price-->
-                                    R$ {{object.value}}
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
+                        <a href="{% url 'car_detail' car.pk %}">
+                          <div class="card h-100">
+                              <!-- Product image-->
+                              <img class="card-img-top" src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" />
+                              <!-- Product details-->
+                              <div class="card-body p-4">
+                                  <div class="text-center">
+                                      <!-- Product name-->
+                                      <h5 class="fw-bolder">{{ car.brand }} {{ car.model }} {{ car.factory_year }}</h5>
+                                      <!-- Product price-->
+                                      R$ {{ car.value }}
+                                  </div></a>
+                              </div>
+                              <!-- Product actions-->
+                              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                              </div>
+                          </div>
+                          
                     </div>
                     {% endfor %}
                     

@@ -81,8 +81,16 @@
                   <div class="col-md-6 col-lg-5">
                     <button type="submit" class="btn btn-outline-dark w-100">
                       Aplicar
-                      <span class="fas fa-arrow-right ms-2 text-white"></span>
+                      
                     </button>
+
+                  </div>
+                  <div>
+                    <a href="{% url 'car_detail' car.pk %}" class="btn btn-outline-dark w-100">cancelar</a>
+                    
+                    <a  class="btn btn-outline-dark flex-shrink-0 me-3" type="button" href="{%url 'car_delete' pk=object.pk %}">
+                      Deletar
+                  </a>
                   </div>
                 </div>
               </form>
