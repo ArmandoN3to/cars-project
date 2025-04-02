@@ -53,7 +53,12 @@
                       <a href="{% url 'car_detail' car.pk %}">
                         <div class="card h-100">
                             <!-- Product image-->
+                            {%if car.photo%}
                             <img class="card-img-top" src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" />
+                            {%else%}
+
+                            <img class="card-img-top" src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" alt="Imagem não disponível" />
+                            {%endif%}
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

@@ -62,6 +62,12 @@
                       <input type="text" class="form-control" id="user" name="{{ form.value.name }}" 
                       placeholder="Enter value" value="{{ form.value.value|default_if_none:'' }}" />
                       <label for="value-error">{{form.value.errors}}</label>
+                      
+                    <div class="form-group mb-2 mt-2 ">
+                      <label for="brand" class="mb-2">Bio</label>
+                      <input type="text" class="form-control" id="user" name="{{ form.bio.name }}" 
+                      placeholder="Enter bio" value="{{ form.bio.value|default_if_none:'' }}" />
+                      <label for="bio-error">{{form.bio.errors}}</label>
 
                     
                     <div class="form-group mb-2 mt-2">

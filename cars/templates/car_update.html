@@ -71,6 +71,12 @@
                       placeholder="Enter brand" value="{{ form.brand.value|default_if_none:'' }}" />
                       <label for="brand-error">{{form.brand.errors}}</label>
 
+                    <div class="form-group mb-2 mt-2 ">
+                      <label for="brand" class="mb-2">Bio</label>
+                      <input type="text" class="form-control" id="user" name="{{ form.bio.name }}" 
+                      placeholder="Enter bio" value="{{ form.bio.value|default_if_none:'' }}" />
+                      <label for="bio-error">{{form.bio.errors}}</label>
+
                     <div class="form-group mb-2 mt-2">
                       <label for="photo" class="mb-2">Foto</label>
                       <input type="file" class="form-control" id="user" name="{{ form.photo.name }}" 
