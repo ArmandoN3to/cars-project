@@ -23,11 +23,13 @@ Uma funcionalidade extra permite gerar automaticamente uma bio do cliente utiliz
 - Integração com Bootstrap para responsividade e estilo do sistema  
 
 ---
+![design-system-cars-project](https://github.com/user-attachments/assets/f48af386-c80b-4791-9626-e3b4d90ba824)
+
 
 ## Tecnologias Utilizadas 🚀  
 
-- Python 3.x  
-- Django 4.x  
+- Python 3.12.2  
+- Django 5.1.6  
 - Bootstrap 5  
 - SQLite3  
 - Gemini-2.0-Flash-Lite (LLM API)  
