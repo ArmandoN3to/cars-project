@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # Sistema de Revenda de Veículos 🚗  
 
 Sistema Web desenvolvido em Django com Bootstrap para gestão de revenda de veículos.  
