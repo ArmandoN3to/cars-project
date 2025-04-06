@@ -1,6 +1,8 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends 'base.html' %}
 
+{% block title %}Update Car{% endblock %}
+
+{% block content %}	
 <section class="light d-flex">
     <div class="container">
       <div class="row justify-content-center align-items-center h-100">
@@ -9,7 +11,7 @@
             <div class="card-body p-md-5">
               <div class="row mb-4 ">
                 <div class="col-md-6">
-                  <h2 class="heading">Cadastrar Carro</h2>
+                  <h2 class="heading">Editar Carro</h2>
                 </div>
               </div>
               <form method="post" enctype="multipart/form-data">
@@ -26,7 +28,7 @@
 
                     <div class="form-group mb-2 mt-2">
                       <label for="brand" class="mb-2">Marca</label>
-                      <select class="form-control mb-2" id="brand" name="brand">  <!-- name="brand" (mesmo nome do campo no form) -->
+                      <select class="form-control" id="brand" name="brand">  <!-- name="brand" (mesmo nome do campo no form) -->
                           <option value="">Selecione uma marca</option>
                           {% for brand in brands %}
                               <option value="{{ brand.id }}" {% if form.brand.value == brand.id %}selected{% endif %}>
@@ -62,14 +64,19 @@
                       <input type="text" class="form-control" id="user" name="{{ form.value.name }}" 
                       placeholder="Enter value" value="{{ form.value.value|default_if_none:'' }}" />
                       <label for="value-error">{{form.value.errors}}</label>
-                      
+
+                    <div class="form-group mb-2 mt-2">
+                      <label for="brand" class="mb-2">Marca</label>
+                      <input type="text" class="form-control" id="user" name="{{ form.brand.name }}" 
+                      placeholder="Enter brand" value="{{ form.brand.value|default_if_none:'' }}" />
+                      <label for="brand-error">{{form.brand.errors}}</label>
+
                     <div class="form-group mb-2 mt-2 ">
                       <label for="brand" class="mb-2">Bio</label>
                       <input type="text" class="form-control" id="user" name="{{ form.bio.name }}" 
                       placeholder="Enter bio" value="{{ form.bio.value|default_if_none:'' }}" />
                       <label for="bio-error">{{form.bio.errors}}</label>
 
-                    
                     <div class="form-group mb-2 mt-2">
                       <label for="photo" class="mb-2">Foto</label>
                       <input type="file" class="form-control" id="user" name="{{ form.photo.name }}" 
@@ -80,8 +87,16 @@
                   <div class="col-md-6 col-lg-5">
                     <button type="submit" class="btn btn-outline-dark w-100">
                       Aplicar
-                      <span class="fas fa-arrow-right ms-2 text-white"></span>
+                      
                     </button>
+
+                  </div>
+                  <div>
+                    <a href="{% url 'car_detail' car.pk %}" class="btn btn-outline-dark w-100">cancelar</a>
+                    
+                    <a  class="btn btn-outline-dark flex-shrink-0 me-3" type="button" href="{%url 'car_delete' pk=object.pk %}">
+                      Deletar
+                  </a>
                   </div>
                 </div>
               </form>

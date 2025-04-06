@@ -1,0 +1,31 @@
+{% extends "base.html" %}  <!-- Certifique-se de estender base.html -->
+
+{% block content %}
+<section class="ezy__signin5 light d-flex">
+    <div class="container">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-lg-10 py-5">
+                <div class="card form-card">
+                    <div class="card-body p-md-5">
+                        <div class="row mb-4 mb-md-5">
+                            <div class="col-md-12">  <!-- Ajustei para ocupar toda a largura -->
+                                <h2 class="heading">Deletar veículo</h2>
+                                <div class="lead">
+                                    <p>Você tem certeza que quer deletar o veículo <strong>{{ car.brand }} {{ car.model }}</strong>?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="post">  <!-- Corrigi a tag <form> -->
+                            {% csrf_token %}  <!-- Token CSRF dentro do <form> -->
+                            <div class="d-flex gap-3">  <!-- Adicionei um layout flex para os botões -->
+                                <button type="submit" class="btn btn-danger">Deletar carro</button>
+                                <a href="{% url 'car_update' car.pk %}" class="btn btn-outline-dark">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

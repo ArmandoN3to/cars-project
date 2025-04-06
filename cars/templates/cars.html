@@ -19,7 +19,6 @@
     
     {% block content %}   
     <body>
-
             <!-- Header-->
             <header class="bg-dark py-5">
                 <div class="container px-4 px-lg-5 my-5">
@@ -31,7 +30,7 @@
             </header>
                     
         <div class="container px-4 px-lg-5 my-5 text-center ">
-            <h1 class="display-4 fw-bolder ">Nossos Carros</h1>
+            <h3 class="h3 display-4 fw-bolder ">Nossos Carros</h3>
         </div>
 
         <form method="GET" action="{% url 'cars_list' %}" class="group">
@@ -49,10 +48,17 @@
                 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     {% for car in cars %}
+                    
                     <div class="col mb-5">
+                      <a href="{% url 'car_detail' car.pk %}">
                         <div class="card h-100">
                             <!-- Product image-->
+                            {%if car.photo%}
                             <img class="card-img-top" src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}" />
+                            {%else%}
+
+                            <img class="card-img-top" src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" alt="Imagem não disponível" />
+                            {%endif%}
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -60,7 +66,7 @@
                                     <h5 class="fw-bolder">{{ car.brand }} {{ car.model }} {{ car.factory_year }}</h5>
                                     <!-- Product price-->
                                     R$ {{ car.value }}
-                                </div>
+                                </div></a>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -73,12 +79,71 @@
                 {% endfor %}
                 </div>
             </div>
-            {% else %}
-            <p class="no-results">Nenhum carro encontrado.</p>
-            {% endif %}
-            
+                  {% else %}
+                  <p class="no-results">Nenhum carro encontrado.</p>
+                  {% endif %}
+
+            <div  >
+              <hr class=" ">
+            </div>  
+
+            <!-- About US -->
+            <section class="ezy__about6 light" id="ezy__about6">
+                <div class="container">
+                  <div class="row justify-content-center text-center mb-5">
+                    <div class="col-12 col-md-8">
+                      <h2 class="ezy__about6-heading fw-bold mb-4">Sobre nós</h2>
+                      <p class="ezy__about6-sub-heading">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque, arcu in venenatis lacinia, 
+                        arcu sapien ullamcorper neque, ac vulputate eros metus ac libero. Ut in mi elit. Suspendisse et purus lorem. 
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row align-items-center justify-content-center mt-5">
+                    <div class="col-12 col-md-5 order-2">
+                      <div class="d-flex flex-column justify-content-center ezy__about6-content pe-md-5">
+                        <h4 class="fw-bold mb-3">A jornada.</h4>
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque, arcu in venenatis lacinia, 
+                            arcu sapien ullamcorper neque, ac vulputate eros metus ac libero. Ut in mi elit. Suspendisse et purus lorem. 
+                            Nunc rhoncus facilisis ante. In tincidunt et nisl non porta. Cras at sapien gravida, molestie nisl eget, laoreet libero. 
+                            Nunc enim lacus, tempor eget scelerisque vitae, efficitur non ante.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-5 order-1 order-md-2 mb-4 mb-md-0">
+                      <div>
+                        <img src="https://images.pexels.com/photos/136872/pexels-photo-136872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-fluid card" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row align-items-center justify-content-center mt-5">
+                    <div class="col-12 col-md-5 order-2">
+                      <div class="d-flex flex-column justify-content-center ezy__about6-content ps-md-5">
+                        <h4 class="fw-bold mb-3">O caminho para o sucesso.</h4>
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque, arcu in venenatis lacinia, 
+                            arcu sapien ullamcorper neque, ac vulputate eros metus ac libero. Ut in mi elit. Suspendisse et purus lorem. 
+                            Nunc rhoncus facilisis ante. In tincidunt et nisl non porta. Cras at sapien gravida, molestie nisl eget, laoreet libero. 
+                            Nunc enim lacus, tempor eget scelerisque vitae, efficitur non ante. Donec eleifend nibh vitae est tristique posuere.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-5 order-1 mb-4 mb-md-0">
+                      <div>
+                        <img src="https://images.pexels.com/photos/3311574/pexels-photo-3311574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-fluid card" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div>
+                <hr class="">
+              </div> 
         </section>
-        <!-- Bootstrap core JS-->
+
+       
+       <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{% static 'js/scripts.js' %}"></script>

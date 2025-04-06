@@ -1,11 +1,61 @@
 {%extends "base.html" %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <table>
-        {{login_form.as_table}}
-    </table>
-    <input type="submit" value="entrar">
-</form>
+
+<section class="ezy__signin5 light d-flex">
+    <div class="container">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-lg-10 py-5">
+          <div class="card form-card">
+            <div class="card-body p-md-5">
+              <div class="row mb-4 mb-md-5">
+                <div class="col-md-6">
+                  <h2 class="heading ">Login</h2>
+                </div>
+                <div class="col-md-6">
+                  <p class="mb-0 text-md-end">
+                    <div class="d-flex justify-content-center mt-5">
+                    <span class="opacity-50 me-2">Don't have an account?</span>
+
+                    <a href="{% url 'register' %}" class="btn btn-link p-0 text-dark text-decoration-none ">Create account</a>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              <form method="post">
+                {% csrf_token %}
+                <div class="row justify-content-between">
+                  <div class="col-md-6 col-lg-5">
+                    <div class="form-group mb-4 mt-2">
+                      <label for="email" class="mb-2">Username</label>
+                      <input type="text" class="form-control" id="user" name="{{ login_form.username.name }}" 
+                      placeholder="Enter username" value="{{ login_form.username.value|default_if_none:'' }}" />
+                    </div>
+                    <div class="form-group mb-2 mt-2">
+                      <label for="password" class="mb-2">Password</label>
+                      <input type="password" class="form-control" id="password" name="{{ login_form.password.name }}" 
+                      placeholder="Enter Password" />
+                    </div>
+                    <div class="form-group mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="remember-me" checked />
+                        <label class="form-check-label" for="remember-me"> Remember me </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-5">
+                    <button type="submit" class="btn btn-outline-dark w-100">
+                      Log In
+                      <span class="fas fa-arrow-right ms-2 text-white"></span>
+                    </button>
+                    <button class="btn w-100">Forget your password?</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

@@ -1,4 +1,10 @@
 # Created by https://www.gitignore.io
+*.env
+
+*.png
+*.jpeg
+*.jpg
+*.sqlite3
 
 ### OSX ###
 .DS_Store
@@ -107,3 +113,4 @@ bench/bench
 deno.lock
 bun.lockb
 .DS_Store
+db.sqlite3
