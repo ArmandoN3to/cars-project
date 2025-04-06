@@ -113,3 +113,4 @@ bench/bench
 deno.lock
 bun.lockb
 .DS_Store
+db.sqlite3
