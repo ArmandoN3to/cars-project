@@ -5,7 +5,7 @@
 
 Sistema Web desenvolvido em Django com Bootstrap para gestão de revenda de veículos.  
 O sistema permite o cadastro, visualização, atualização e remoção de usuários e carros, além de controle de permissões e autenticação.  
-Uma funcionalidade extra permite gerar automaticamente uma bio do cliente utilizando a API Gemini-2.0-Flash-Lite (LLM).
+Uma funcionalidade extra permite gerar automaticamente uma bio do Veiculo utilizando a API Gemini-2.0-Flash-Lite (LLM).
 
 ---
 
@@ -19,7 +19,7 @@ Uma funcionalidade extra permite gerar automaticamente uma bio do cliente utiliz
   - Logout  
 - Permissões de Usuários:  
   - Diferentes níveis de acesso (Admin, Usuário Comum)  
-- Adição de Bio do Cliente com LLM (Gemini-2.0-Flash-Lite)  
+- Adição de Bio do Veiculo com LLM (Gemini-2.0-Flash-Lite)  
 - Integração com Bootstrap para responsividade e estilo do sistema  
 
 ---
@@ -33,7 +33,6 @@ Uma funcionalidade extra permite gerar automaticamente uma bio do cliente utiliz
 - Bootstrap 5  
 - SQLite3  
 - Gemini-2.0-Flash-Lite (LLM API)  
-- Python-Decouple (Leitura de variáveis de ambiente)  
 
 ---
 
