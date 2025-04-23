@@ -32,3 +32,5 @@ def car_pre_save(sender,instance,**kwargs):
             year=instance.model_year
         )
         instance.bio = ai_bio
+
+
