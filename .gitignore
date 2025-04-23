@@ -7,6 +7,8 @@
 *.jpeg
 *.jpg
 *.sqlite3
+db.sqlite3
+
 
 ### OSX ###
 .DS_Store
