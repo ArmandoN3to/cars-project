@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io
 *.env
-
+*db.sqlite3
+*.sqlite3
+*.sqlite
 *.png
 *.jpeg
 *.jpg
